@@ -1,0 +1,18 @@
+apiVersion: nais.io/v1
+kind: Naisjob
+metadata:
+  labels:
+    team: nada
+  name: 
+  namespace: nada
+spec:
+  image: {{ image }}
+  ttlSecondsAfterFinished: 340
+  backoffLimit: 2
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  schedule: '0 * * * *'
+  env:
+    - name: NADA_BACKEND_URL
+      value: http://nada-backend/api/query
