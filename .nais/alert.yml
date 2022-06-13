@@ -1,11 +1,11 @@
 apiVersion: nais.io/v1
 kind: Alert
 metadata:
-  name: begrep-indekser
-  namespace: teamdatajegerne
+  name: nada-datasetenricher
+  namespace: nada
   labels:
-    team: teamdatajegerne
-    app: begrep-indekser
+    team: nada
+    app: nada-datasetenricher
 spec:
   receivers:
     slack:
