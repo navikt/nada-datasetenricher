@@ -16,3 +16,7 @@ spec:
   env:
     - name: NADA_BACKEND_URL
       value: http://nada-backend/api/query
+  accessPolicy:
+    outbound:
+      rules:
+        - application: nada-backend
