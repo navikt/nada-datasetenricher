@@ -13,5 +13,4 @@ RUN go build -a -installsuffix cgo -o nada-datasetenricher ./cmd/nada-datasetenr
 FROM alpine:3
 WORKDIR /app
 COPY --from=builder /src/nada-datasetenricher /app/nada-datasetenricher
-ENV NADA_BACKEND_URL http://localhost:8080/api/query
 CMD ["/app/nada-datasetenricher"]
