@@ -14,7 +14,7 @@ spec:
       for: 2m
       annotations:
         consequence: Synkronisering av metadata om datasett i markedsplassen med BigQuery er stoppet
-        action: "`Se logger på https://logs.adeo.no -> søk etter `pod:nada-datasetenricher* AND namespace:nada`"
+        action: "`Se logger på https://logs.adeo.no -> søk etter `pod:nada-datasetenricher* AND namespace:nada``"
         summary: |-
           Naisjob nada-datasetenricher feiler i prod-gcp namespace nada (repo https://github.com/navikt/nada-datasetenricher)
       labels:
