@@ -9,7 +9,7 @@ spec:
   groups:
   - name: nada-datasetenricher-alert
     rules:
-    - alert: InstanceDown
+    - alert: NaisjobDown
       expr: kube_job_failed{job_name=~"^nada-datasetenricher.*", namespace="nada"} > 0
       for: 2m
       annotations:
