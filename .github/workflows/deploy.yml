@@ -30,8 +30,8 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [build-and-push]
     steps:
+      - uses: actions/checkout@v4
       - name: Deploy to dev-gcp
-        if: inputs.environment != 'prod'
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
@@ -43,8 +43,9 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [build-and-push, deploy-dev]
     steps:
+      - uses: actions/checkout@v4
       - name: Deploy to prod-gcp
-        if: github.ref == 'refs/heads/main' && inputs.environment != 'dev'|| inputs.environment == 'prod'
+        if: github.ref == 'refs/heads/main'
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
