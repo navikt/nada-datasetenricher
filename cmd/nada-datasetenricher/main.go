@@ -1,31 +1,23 @@
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/shurcooL/graphql"
+	"log"
+	"net/http"
+	"time"
 )
 
 func main() {
-	ctx := context.Background()
-	nbURL := os.Getenv("NADA_BACKEND_URL")
-
-	if nbURL == "" {
-		fmt.Println("nada-backend URL not set")
-		os.Exit(1)
-	}
-	client := graphql.NewClient(nbURL, nil)
-
-	var m struct {
-		TriggerMetadataSync bool `graphql:"triggerMetadataSync"`
+	client := http.Client{
+		Timeout: 5 * time.Minute,
 	}
 
-	if err := client.Mutate(ctx, &m, nil); err != nil {
-		fmt.Println("error", err)
-		os.Exit(1)
+	request, err := http.NewRequest("POST", "http://nada-backend/api/bigquery/tables/sync", nil)
+	if err != nil {
+		log.Fatalf("building request: %v", err)
 	}
 
-	os.Exit(0)
+	_, err = client.Do(request)
+	if err != nil {
+		log.Fatalf("sending request: %v", err)
+	}
 }

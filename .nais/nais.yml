@@ -13,9 +13,6 @@ spec:
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   schedule: '0 * * * *'
-  env:
-    - name: NADA_BACKEND_URL
-      value: http://nada-backend/api/query
   accessPolicy:
     outbound:
       rules:
